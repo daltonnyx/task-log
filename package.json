@@ -8,7 +8,7 @@
     "test": "node server/app.js",
     "migrate-test": "mongo migrate/test.db.js",
     "build": "babel src --presets react,es2015 --out-dir public/dist",
-    "prestart": "babel src --presets react,es2015 --out-dir public/dist && sass scss/app.scss:assets/css/app.css",
+    "prestart": "babel src --presets react,es2015 --out-dir public/dist",
     "start": "node server/app.js"
   },
   "keywords": ["task logging"],

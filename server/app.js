@@ -6,6 +6,6 @@ app.use(express.static('public'));
 app.use('/assets', express.static('assets'));
 
 
-app.listen(3000, () => {
+app.listen(80, () => {
     console.log('App start at :3000');
 })
