@@ -1,4 +1,4 @@
-class Navbar extends React.Component {
+export default class Navbar extends React.Component {
     render() {
         return (
             <nav>

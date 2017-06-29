@@ -9,7 +9,7 @@ db.roles.remove({});
 db.tasks.insert([
     {
         title: 'Fix web cho vantuongthanh',
-        status: 'Open',
+        description: 'Fix menu và mobile',
         owner: {
             fullName: 'Truong Ngoc Quy',
             position: 'Leader',

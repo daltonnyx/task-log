@@ -1,3 +1,74 @@
-
+main {
+  position: absolute;
+  display: flex;
+  flex-flow: column wrap;
+  height: calc(100% - 64px);
+  width: 100%;
+  margin-top: 64px;
+  top: 0px; }
+  main > .section {
+    width: 100%;
+    flex-basis: 50%; }
+    main > .section.currentTask {
+      background: url("../images/list-bg.jpg") no-repeat center center/cover transparent; }
+    main > .section > .task-list {
+      display: flex;
+      flex-flow: row nowrap; }
+      main > .section > .task-list > li {
+        width: 280px;
+        position: relative;
+        margin: .5rem 0 1rem 30px;
+        background-color: #fff;
+        transition: box-shadow .25s;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+        main > .section > .task-list > li .task-card:not(.done) .task-done {
+          display: none; }
+        main > .section > .task-list > li .task-card:not(.done) .taskScore {
+          font-size: 40px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          color: #000;
+          transform: translate(-50%, -50%); }
+        main > .section > .task-list > li .task-card:not(.done) .score {
+          background: #e0e0e0;
+          cursor: pointer; }
+          main > .section > .task-list > li .task-card:not(.done) .score .taskScore {
+            transition: .2s linear all; }
+          main > .section > .task-list > li .task-card:not(.done) .score:hover {
+            background: #69f0ae; }
+            main > .section > .task-list > li .task-card:not(.done) .score:hover .taskScore {
+              font-size: 64px;
+              color: #fff; }
+        main > .section > .task-list > li .score {
+          min-height: 200px;
+          position: relative; }
+        main > .section > .task-list > li .task-content {
+          padding: 15px;
+          padding-right: 0px; }
+        main > .section > .task-list > li .task-title {
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 32px;
+          margin-bottom: 8px;
+          display: block;
+          position: relative;
+          padding-right: 17px; }
+          main > .section > .task-list > li .task-title .material-icons {
+            position: absolute;
+            right: 5px;
+            top: 5px; }
+        main > .section > .task-list > li .task-card.done .score {
+          background: #00c853; }
+        main > .section > .task-list > li .task-card.done .taskScore {
+          display: none; }
+        main > .section > .task-list > li .task-card.done .task-done {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+          main > .section > .task-list > li .task-card.done .task-done path#tick-mark {
+            fill: #fff; }
 
 /*# sourceMappingURL=app.css.map */

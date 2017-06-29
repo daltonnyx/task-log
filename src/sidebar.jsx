@@ -1,4 +1,4 @@
-class Sidebar extends React.Component {
+export default class Sidebar extends React.Component {
     render() {
         return (
             <ul id="main-nav" className="side-nav">
