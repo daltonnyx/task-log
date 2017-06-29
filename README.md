@@ -1,4 +1,4 @@
-# task-log
+# task log
 
 ## TODO
 1. Create basic API with express
