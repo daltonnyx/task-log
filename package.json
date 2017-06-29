@@ -7,7 +7,9 @@
     "pretest": "babel src --presets react,es2015 --out-dir public/dist && sass scss/app.scss:assets/css/app.css",
     "test": "node server/app.js",
     "migrate-test": "mongo migrate/test.db.js",
-    "build": "babel src --presets react,es2015 --out-dir public/dist"
+    "build": "babel src --presets react,es2015 --out-dir public/dist",
+    "prestart": "babel src --presets react,es2015 --out-dir public/dist && sass scss/app.scss:assets/css/app.css",
+    "start": "node server/app.js"
   },
   "keywords": ["task logging"],
   "author": "Dalton Nyx",
