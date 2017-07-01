@@ -1,9 +1,12 @@
+const path = require('path');
+
 var ENV = function(){
     var dateStartInMonth = 15;
-
+    var modelPath = path.resolve(__dirname, './server/models');
     return {
-        dateStartInMonth = dateStartInMonth;
+        dateStartInMonth: dateStartInMonth,
+        modelPath : modelPath
     }
 }
 
-module.exports = ENV();
+module.exports = new ENV;
