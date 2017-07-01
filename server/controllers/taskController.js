@@ -1,11 +1,15 @@
 'strict mode';
-import appController from './appController.js';
-class taskController extends appController {
-    constructor(props) {
-        
-    }
 
+const RepoFactory = require('../repoFactory.js');
+
+class taskController {
+    constructor() {
+        this.getList = this.getList.bind(this);
+        this.model = RepoFactory.load('task');
+    }
+ 
     getList(req, res) {
+        console.log(this.model);
         res.send("Get list of task");
     }
 

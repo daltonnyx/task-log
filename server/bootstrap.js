@@ -10,6 +10,7 @@ const Bootstrap = function() {
             var controller = require(dir + '/' + file);
             controllers.push(new controller());
         });
+        console.log(controllers);
     }
 
     var dispatch = function( app ) {
