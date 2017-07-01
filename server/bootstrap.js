@@ -36,7 +36,7 @@ const Bootstrap = function() {
         actionName = actionName.replace('$', '/:').replace(/^\//, '');
         let route = '/';
         route += controller.constructor.name.toLowerCase().replace("controller","");
-        route += '/' + actionName;
+        route += `/${actionName}`;
         return { method: method, route: route };
     }
     return {
