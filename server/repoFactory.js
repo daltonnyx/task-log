@@ -16,6 +16,10 @@ class RepoFactory {
         }
         return this.models[model];
     }
+
+    init(model) {
+        
+    }
 }
 
 

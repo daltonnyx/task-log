@@ -1,3 +1,6 @@
+'use strict';
+const RepoFactory = require('../repoFactory.js');
+
 class Task {
     
     constructor(data) {
@@ -11,9 +14,20 @@ class Task {
             this.dateEnd = data.dateEnd;
             this.priority = data.priority;
         }
+        this.tasks = RepoFactory.init(this, {
+            title: String,
+            description: String,
+            owner: {
+                fullName: String
+            },
+
+        });
     }
 
-
+    list(filter) {
+        var filter = filter || {};
+        
+    }
 
     complete() {
         console.log("completing");
