@@ -1,5 +1,6 @@
 'strict mode';
-class taskController {
+import appController from './appController.js';
+class taskController extends appController {
     constructor(props) {
         
     }
