@@ -51,7 +51,7 @@ class Task {
 
     list(filter) {
         var filter = filter || {};
-        
+        return this.tasks.find(filter).sort({dateEnd: -1}).exec();
     }
 
     complete() {

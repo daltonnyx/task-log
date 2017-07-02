@@ -9,7 +9,7 @@ class taskController {
     }
  
     getList(req, res) {
-        this.model.tasks.find({}).sort({dateEnd: -1}).exec().then(tasks => {
+        this.model.list().then(tasks => {
             res.send(tasks);
         }).catch(err => {
             console.log(err);
