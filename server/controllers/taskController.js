@@ -5,12 +5,15 @@ const RepoFactory = require('../repoFactory.js');
 class taskController {
     constructor() {
         this.getList = this.getList.bind(this);
-        this.model = RepoFactory.load('task');
+        this.model = RepoFactory.loadModel('task');
     }
  
     getList(req, res) {
-        console.log(this.model);
-        res.send("Get list of task");
+        this.model.tasks.find({}).sort({dateEnd: -1}).exec().then(tasks => {
+            res.send(tasks);
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     //Pattern function for para: $para1$para2
