@@ -1,6 +1,37 @@
 'use strict';
 const RepoFactory = require('../repoFactory.js');
 
+const TaskSchema = {
+    title: String,
+    description: String,
+    owner: {
+        fullName: String,
+        position: String,
+        username: String,
+        password: String,
+        bio: '',
+        avatar:'',
+        company: {
+            title: String,
+            address: String
+        },
+        role: {
+            code: String,
+            caption: String
+        }
+
+    },
+    reward: {
+        score: Number,
+        title: '',
+    },
+    dateEnd: Date,
+    priority: {
+        order: Number,
+        caption: String
+    }
+};
+
 class Task {
     
     constructor(data) {
@@ -14,14 +45,8 @@ class Task {
             this.dateEnd = data.dateEnd;
             this.priority = data.priority;
         }
-        this.tasks = RepoFactory.init(this, {
-            title: String,
-            description: String,
-            owner: {
-                fullName: String
-            },
-
-        });
+        this.tasks = RepoFactory.initModel(this, TaskSchema);
+        console.log(this.tasks);
     }
 
     list(filter) {
