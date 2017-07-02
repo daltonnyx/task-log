@@ -289,70 +289,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var root = document.getElementById('root');
 
-var tasksData = [{
-    _id: 1,
-    title: 'Fix web cho vantuongthanh',
-    description: 'Fix menu và mobile',
-    owner: {
-        fullName: 'Truong Ngoc Quy',
-        position: 'Leader',
-        username: 'quytn.vinabits',
-        password: '',
-        bio: '',
-        avatar: '',
-        company: {
-            title: 'Vinabits',
-            address: ''
-        },
-        role: {
-            code: 'dev',
-            caption: 'Developer'
-        }
-
-    },
-    reward: {
-        score: 30,
-        title: 'fix web khach hang'
-
-    },
-    dateEnd: new Date('2017-05-23'),
-    priority: {
-        order: 1,
-        caption: 'Normal'
-    }
-}, {
-    _id: 2,
-    title: 'Design web vinaphone',
-    description: 'Design giao diện mobile và desktop',
-    owner: {
-        fullName: 'Nguyen Thi Hien',
-        position: 'Leader',
-        username: 'hiennt.vinabits',
-        password: '',
-        bio: '',
-        avatar: '',
-        company: {
-            title: 'Vinabits',
-            address: ''
-        },
-        role: {
-            code: 'design',
-            caption: 'Designer'
-        }
-
-    },
-    reward: {
-        score: 30,
-        title: 'fix web khach hang'
-
-    },
-    dateEnd: null,
-    priority: {
-        order: 1,
-        caption: 'Normal'
-    }
-}];
-
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
@@ -363,14 +299,25 @@ var App = function (_React$Component) {
 
         _this.completeTask = _this.completeTask.bind(_this);
 
-        var taskArray = tasksData.map(function (data) {
-            return new _task2.default(data);
-        });
-        _this.state = { tasks: taskArray };
+        _this.state = { tasks: [] };
         return _this;
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch("/task/list", {
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                return response.json();
+            }).then(function (data) {
+                _this2.setState({ tasks: data });
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var tasks = this.state.tasks;
@@ -401,15 +348,7 @@ var App = function (_React$Component) {
         }
     }, {
         key: 'completeTask',
-        value: function completeTask(task) {
-
-            var tasks = this.state.tasks;
-            var completeTask = tasks.filter(function (t) {
-                return t._id == task._id;
-            })[0];
-            completeTask.complete();
-            this.setState({ tasks: tasks });
-        }
+        value: function completeTask(task) {}
     }]);
 
     return App;
