@@ -2,7 +2,7 @@ main {
     position: absolute;
     display: flex;
     flex-flow: column wrap;
-    height: calc(100% - 64px);
+    height: auto;
     width: 100%;
     margin-top: 64px;
     top: 0px;
@@ -89,6 +89,20 @@ main {
                         path#tick-mark {
                             fill: #fff;
                         }
+                    }
+               }
+               &.task-add {
+                    background-color: rgba(255,255,2555,.35);
+                    color: #666;
+                    position: relative;
+                    cursor: pointer;
+                    i {
+                        font-size: 100px;
+                        color: #fff;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
                     }
                }
             }  

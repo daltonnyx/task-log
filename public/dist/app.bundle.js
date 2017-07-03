@@ -279,6 +279,10 @@ var _taskList = __webpack_require__(5);
 
 var _taskList2 = _interopRequireDefault(_taskList);
 
+var _taskForm = __webpack_require__(8);
+
+var _taskForm2 = _interopRequireDefault(_taskForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -343,7 +347,8 @@ var App = function (_React$Component) {
                         { className: 'section tasklog' },
                         'Monthly Tasklog goes here'
                     )
-                )
+                ),
+                React.createElement(_taskForm2.default, null)
             );
         }
     }, {
@@ -415,6 +420,10 @@ var _taskCard = __webpack_require__(6);
 
 var _taskCard2 = _interopRequireDefault(_taskCard);
 
+var _taskAdd = __webpack_require__(7);
+
+var _taskAdd2 = _interopRequireDefault(_taskAdd);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var TaskList = function TaskList(props) {
@@ -422,9 +431,14 @@ var TaskList = function TaskList(props) {
         return React.createElement(_taskCard2.default, { key: task._id, task: task, completeTask: props.completeTask });
     });
     return React.createElement(
-        "ul",
-        { className: "task-list" },
-        tasks
+        'ul',
+        { className: 'task-list' },
+        tasks,
+        React.createElement(
+            'li',
+            { className: 'task-add' },
+            React.createElement(_taskAdd2.default, null)
+        )
     );
 };
 
@@ -522,6 +536,100 @@ var TaskCard = function (_React$Component) {
 }(React.Component);
 
 exports.default = TaskCard;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var TaskAdd = function TaskAdd(props) {
+    return React.createElement(
+        "div",
+        { className: "task-add" },
+        React.createElement(
+            "a",
+            { "data-target": "task-form", href: "#task-form" },
+            React.createElement(
+                "i",
+                { className: "material-icons" },
+                "add"
+            )
+        )
+    );
+};
+
+exports.default = TaskAdd;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TaskForm = function (_React$Component) {
+    _inherits(TaskForm, _React$Component);
+
+    function TaskForm() {
+        _classCallCheck(this, TaskForm);
+
+        return _possibleConstructorReturn(this, (TaskForm.__proto__ || Object.getPrototypeOf(TaskForm)).call(this));
+    }
+
+    _createClass(TaskForm, [{
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { id: "task-form", className: "modal modal-fixed-footer" },
+                React.createElement(
+                    "div",
+                    { className: "modal-content" },
+                    React.createElement(
+                        "h4",
+                        null,
+                        "Modal Header"
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        "A bunch of text"
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "modal-footer" },
+                    React.createElement(
+                        "a",
+                        { href: "#!", className: "modal-action modal-close waves-effect waves-green btn-flat" },
+                        "OK"
+                    )
+                )
+            );
+        }
+    }]);
+
+    return TaskForm;
+}(React.Component);
+
+exports.default = TaskForm;
 
 /***/ })
 /******/ ]);

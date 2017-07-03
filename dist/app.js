@@ -18,6 +18,10 @@ var _taskList = require('./task/taskList.js');
 
 var _taskList2 = _interopRequireDefault(_taskList);
 
+var _taskForm = require('./task/taskForm.js');
+
+var _taskForm2 = _interopRequireDefault(_taskForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -82,7 +86,8 @@ var App = function (_React$Component) {
                         { className: 'section tasklog' },
                         'Monthly Tasklog goes here'
                     )
-                )
+                ),
+                React.createElement(_taskForm2.default, null)
             );
         }
     }, {

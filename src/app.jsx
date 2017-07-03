@@ -3,7 +3,7 @@ import Task from './task/task.js';
 import Sidebar from './sidebar.js';
 import Navbar from './nav.js';
 import TaskList from './task/taskList.js';
-
+import TaskForm from './task/taskForm.js';
 class App extends React.Component  {
     constructor() {
         super();
@@ -39,6 +39,7 @@ class App extends React.Component  {
                         Monthly Tasklog goes here
                     </div>
                 </main>
+                <TaskForm />
             </div>
         );
     }
