@@ -96,6 +96,12 @@ main {
                     color: #666;
                     position: relative;
                     cursor: pointer;
+                    a {
+                        position: absolute;
+                        width: 100%;
+                        display: block;
+                        height: 100%;
+                    }
                     i {
                         font-size: 100px;
                         color: #fff;
@@ -106,6 +112,15 @@ main {
                     }
                }
             }  
+        }
+    }
+}
+
+#task-form {
+    h4 {
+        input {
+            font-size: inherit;
+            border: inherit;
         }
     }
 }
