@@ -75,6 +75,11 @@ main {
           color: #666;
           position: relative;
           cursor: pointer; }
+          main > .section > .task-list > li.task-add a {
+            position: absolute;
+            width: 100%;
+            display: block;
+            height: 100%; }
           main > .section > .task-list > li.task-add i {
             font-size: 100px;
             color: #fff;
@@ -82,5 +87,9 @@ main {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); }
+
+#task-form h4 input {
+  font-size: inherit;
+  border: inherit; }
 
 /*# sourceMappingURL=app.css.map */
