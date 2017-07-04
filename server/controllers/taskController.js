@@ -1,4 +1,4 @@
-'strict mode';
+'use strict';
 
 const RepoFactory = require('../repoFactory.js');
 
