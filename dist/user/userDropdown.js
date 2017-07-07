@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 var UserDropdown = function UserDropdown(props) {
     return React.createElement(
         "div",
-        { className: "input-field col s12" },
+        { className: "input-field s12" },
         React.createElement(
             "select",
             { onChange: props.change, name: "owner" },

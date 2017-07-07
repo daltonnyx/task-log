@@ -84,12 +84,8 @@ var TaskForm = function (_React$Component) {
                         React.createElement(_userDropdown2.default, { change: this.onOwnerChange, users: this.state.users }),
                         React.createElement(
                             "div",
-                            { className: "input-field col s12" },
-                            React.createElement(
-                                "textarea",
-                                { onChange: this.onDescriptionChange, id: "description", name: "description", className: "materialize-textarea" },
-                                this.state.task ? this.state.task.description : ""
-                            ),
+                            { className: "input-field s12" },
+                            React.createElement("textarea", { value: this.state.task ? this.state.task.description : "", onChange: this.onDescriptionChange, id: "description", name: "description", className: "materialize-textarea" }),
                             React.createElement(
                                 "label",
                                 null,
@@ -103,8 +99,8 @@ var TaskForm = function (_React$Component) {
                     { className: "modal-footer" },
                     React.createElement(
                         "a",
-                        { href: "#!", className: "modal-action modal-close waves-effect waves-green btn-flat" },
-                        "OK"
+                        { href: "#!", className: "modal-action modal-close waves-effect waves-green btn" },
+                        this.state.task ? "Update" : "Create"
                     )
                 )
             );
