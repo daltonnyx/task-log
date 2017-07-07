@@ -1,6 +1,6 @@
 const UserDropdown = props => {
     return (
-    <div className="input-field col s12">
+    <div className="input-field s12">
         <select onChange={props.change} name="owner">
             { props.users.map( user => 
                 <option key={user._id} value={user._id}>{user.fullName}</option>

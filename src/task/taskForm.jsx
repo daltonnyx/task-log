@@ -41,16 +41,15 @@ export default class TaskForm extends React.Component {
                   <form id="task">
                       <h4><input type="text" onChange={this.onTitleChange} value={ this.state.task ? this.state.task.title : "New Task" } /></h4>
                       <UserDropdown change={this.onOwnerChange} users={this.state.users} />
-                      <div className="input-field col s12">
-                          <textarea onChange={this.onDescriptionChange} id="description" name="description" className="materialize-textarea">
-                            { this.state.task ? this.state.task.description : "" } 
-                          </textarea>
+                      <div className="input-field s12">
+                          <textarea value={ this.state.task ? this.state.task.description : ""  } onChange={this.onDescriptionChange} id="description" name="description" className="materialize-textarea" />
+                             
                           <label>Description</label>
                       </div>
                   </form>
                 </div>
                 <div className="modal-footer">
-                  <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+                  <a href="#!" className="modal-action modal-close waves-effect waves-green btn">{ this.state.task ? "Update" : "Create" }</a>
               </div>
             </div>
         );
