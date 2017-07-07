@@ -7,8 +7,8 @@
     "pretest": "babel src --presets react,es2015 --out-dir dist && webpack dist/*.js public/dist/app.bundle.js && sass scss/app.scss:assets/css/app.css",
     "test": "node server/app.js",
     "migrate-test": "mongo migrate/test.db.js",
-    "build": "babel src --presets react,es2015 --out-dir dist",
-    "webpackw": "webpack dist/*.js public/dist/app.bundle.js",
+    "build": "babel --watch src --presets react,es2015 --out-dir dist",
+    "webpackw": "webpack -w dist/*.js public/dist/app.bundle.js",
     "sasswatch": "sass --watch scss/app.scss:assets/css/app.css",
     "start": "node server/app.js"
   },
