@@ -4,10 +4,12 @@
   "description": "A helper for log monthly task at vinabits",
   "main": "index.js",
   "scripts": {
-    "pretest": "babel src --presets react,es2015 --out-dir public/dist && sass scss/app.scss:assets/css/app.css",
+    "pretest": "babel src --presets react,es2015 --out-dir dist && webpack dist/*.js public/dist/app.bundle.js && sass scss/app.scss:assets/css/app.css",
     "test": "node server/app.js",
     "migrate-test": "mongo migrate/test.db.js",
-    "build": "babel src --presets react,es2015 --out-dir dist && webpack dist/*.js public/dist/app.bundle.js && sass scss/app.scss:assets/css/app.css",
+    "build": "babel src --presets react,es2015 --out-dir dist",
+    "webpackw": "webpack dist/*.js public/dist/app.bundle.js",
+    "sasswatch": "sass --watch scss/app.scss:assets/css/app.css",
     "start": "node server/app.js"
   },
   "keywords": [
