@@ -586,6 +586,10 @@ var _userDropdown = __webpack_require__(9);
 
 var _userDropdown2 = _interopRequireDefault(_userDropdown);
 
+var _rewardPick = __webpack_require__(10);
+
+var _rewardPick2 = _interopRequireDefault(_rewardPick);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -602,7 +606,7 @@ var TaskForm = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (TaskForm.__proto__ || Object.getPrototypeOf(TaskForm)).call(this, props));
 
-        _this.state = { users: [], task: props.task };
+        _this.state = { users: [], task: props.task, rewards: [] };
         _this.onTitleChange = _this.onTitleChange.bind(_this);
         _this.onOwnerChange = _this.onOwnerChange.bind(_this);
         _this.onDescriptionChange = _this.onDescriptionChange.bind(_this);
@@ -610,8 +614,13 @@ var TaskForm = function (_React$Component) {
     }
 
     _createClass(TaskForm, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
+            this.loadUsers().loadRewards();
+        }
+    }, {
+        key: 'loadUsers',
+        value: function loadUsers() {
             var _this2 = this;
 
             fetch("/user/list", {
@@ -619,63 +628,98 @@ var TaskForm = function (_React$Component) {
             }).then(function (res) {
                 return res.json();
             }).then(function (data) {
-                _this2.setState({ users: data, task: _this2.props.task });
+                var newState = _this2.state;
+                newState.users = data;
+                _this2.setState(newState);
                 jQuery('select[name="owner"]').material_select();
             });
+            return this;
         }
     }, {
-        key: "onTitleChange",
+        key: 'loadRewards',
+        value: function loadRewards() {
+            var _this3 = this;
+
+            fetch("/reward/list", {
+                method: "GET"
+            }).then(function (res) {
+                return res.json();
+            }).then(function (data) {
+                var newState = _this3.state;
+                newState.rewards = data;
+                _this3.setState(newState);
+                jQuery('select[name="reward"]').material_select(_this3.onRewardChange.bind(_this3));
+            });
+            return this;
+        }
+    }, {
+        key: 'onTitleChange',
         value: function onTitleChange(e) {
-            var task = this.state.task || {};
-            task.title = e.target.value;
-            this.setState({ users: this.state.users, task: task });
+            this.updateTask({ title: e.target.value });
         }
     }, {
-        key: "onOwnerChange",
+        key: 'updateTask',
+        value: function updateTask(obj) {
+            var task = this.state.task || {};
+            for (var prop in obj) {
+                task[prop] = obj[prop];
+            }
+            var newState = this.state;
+            newState.task = task;
+            this.setState(newState);
+        }
+    }, {
+        key: 'onOwnerChange',
         value: function onOwnerChange(e) {}
     }, {
-        key: "onDescriptionChange",
+        key: 'onDescriptionChange',
         value: function onDescriptionChange(e) {
-            var task = this.state.task || {};
-            task.description = e.target.innerText;
-            this.setState({ users: this.state.users, task: task });
+            this.updateTask({ description: e.target.value });
         }
     }, {
-        key: "render",
+        key: 'onRewardChange',
+        value: function onRewardChange(e) {
+            var rewardDropdown = document.querySelector('[name="reward"]');
+            var selectedItem = rewardDropdown.children[rewardDropdown.selectedIndex];
+            console.log(selectedItem);
+        }
+    }, {
+        key: 'render',
         value: function render() {
             return React.createElement(
-                "div",
-                { id: "task-form", className: "modal modal-fixed-footer" },
+                'div',
+                { id: 'task-form', className: 'modal modal-fixed-footer' },
                 React.createElement(
-                    "div",
-                    { className: "modal-content" },
+                    'div',
+                    { className: 'modal-content' },
                     React.createElement(
-                        "form",
-                        { id: "task" },
+                        'form',
+                        { id: 'task' },
                         React.createElement(
-                            "h4",
+                            'h4',
                             null,
-                            React.createElement("input", { type: "text", onChange: this.onTitleChange, value: this.state.task ? this.state.task.title : "New Task" })
+                            React.createElement('input', { type: 'text', onChange: this.onTitleChange, value: this.state.task ? this.state.task.title : "New Task" })
                         ),
                         React.createElement(_userDropdown2.default, { change: this.onOwnerChange, users: this.state.users }),
                         React.createElement(
-                            "div",
-                            { className: "input-field s12" },
-                            React.createElement("textarea", { value: this.state.task ? this.state.task.description : "", onChange: this.onDescriptionChange, id: "description", name: "description", className: "materialize-textarea" }),
+                            'div',
+                            { className: 'input-field s12' },
+                            React.createElement('textarea', { value: this.state.task ? this.state.task.description : "", onChange: this.onDescriptionChange, id: 'description', name: 'description', className: 'materialize-textarea' }),
                             React.createElement(
-                                "label",
+                                'label',
                                 null,
-                                "Description"
+                                'Description'
                             )
-                        )
+                        ),
+                        React.createElement(_rewardPick2.default, { change: this.onRewardChange, rewards: this.state.rewards })
                     )
                 ),
                 React.createElement(
-                    "div",
-                    { className: "modal-footer" },
+                    'div',
+                    { className: 'modal-footer' },
                     React.createElement(
-                        "a",
-                        { href: "#!", className: "modal-action modal-close waves-effect waves-green btn" },
+                        'a',
+                        { href: '#!', className: 'modal-action modal-close waves-effect waves-green btn' },
                         this.state.task ? "Update" : "Create"
                     )
                 )
@@ -722,6 +766,41 @@ var UserDropdown = function UserDropdown(props) {
 };
 
 exports.default = UserDropdown;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var RewardPick = function RewardPick(props) {
+    return React.createElement(
+        "div",
+        { className: "input-field s12" },
+        React.createElement(
+            "select",
+            { onChange: props.change, name: "reward" },
+            props.rewards.map(function (reward) {
+                return React.createElement(
+                    "option",
+                    { key: reward._id, value: reward.score },
+                    reward.title
+                );
+            })
+        ),
+        React.createElement(
+            "label",
+            null,
+            "Score"
+        )
+    );
+};
+
+exports.default = RewardPick;
 
 /***/ })
 /******/ ]);
